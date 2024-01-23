@@ -8,11 +8,11 @@ pub(crate) fn generate_context(variant: &InstructionVariant) -> TokenStream {
             let account_name = syn::parse_str::<syn::Ident>(&account.name).unwrap();
             if account.optional {
                 quote! {
-                    pub #account_name: Option<&'a solana_program::account_info::AccountInfo<'a>>
+                    pub #account_name: Option<&'a domichain_program::account_info::AccountInfo<'a>>
                 }
             } else {
                 quote! {
-                    pub #account_name:&'a solana_program::account_info::AccountInfo<'a>
+                    pub #account_name:&'a domichain_program::account_info::AccountInfo<'a>
                 }
             }
         });
@@ -42,10 +42,10 @@ pub(crate) fn generate_context(variant: &InstructionVariant) -> TokenStream {
         }
         impl<'a> #name<'a> {
             pub fn context(
-                accounts: &'a [solana_program::account_info::AccountInfo<'a>]
-            ) -> Result<Context<'a, Self>, solana_program::sysvar::slot_history::ProgramError> {
+                accounts: &'a [domichain_program::account_info::AccountInfo<'a>]
+            ) -> Result<Context<'a, Self>, domichain_program::sysvar::slot_history::ProgramError> {
                 if accounts.len() < #expected {
-                    return Err(solana_program::sysvar::slot_history::ProgramError::NotEnoughAccountKeys);
+                    return Err(domichain_program::sysvar::slot_history::ProgramError::NotEnoughAccountKeys);
                 }
 
                 Ok(Context {

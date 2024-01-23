@@ -5,10 +5,10 @@ use syn::{Error as ParseError, Result as ParseResult};
 const PROGRAM_ID_DESC: &str = "The id of the program";
 const PROGRAM_ID_NAME: &str = "program_id";
 pub const PUBKEY_TY: &str = "Pubkey";
-pub const FULL_PUBKEY_TY: &str = "::solana_program::pubkey::Pubkey";
+pub const FULL_PUBKEY_TY: &str = "::domichain_program::pubkey::Pubkey";
 pub const ACCOUNT_INFO_TY: &str = "AccountInfo";
 pub const FULL_ACCOUNT_INFO_TY: &str =
-    "::solana_program::account_info::AccountInfo";
+    "::domichain_program::account_info::AccountInfo";
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum Seed {
@@ -154,7 +154,7 @@ mod tests {
             assert_eq!(desc, PROGRAM_ID_DESC);
             assert_eq!(ty.ident.to_string().as_str(), "Pubkey");
             assert!(ty.kind.is_custom());
-            assert_eq!(&format!("{:?}", ty.kind), "TypeKind::Value(Value::Custom(\"::solana_program::pubkey::Pubkey\"))")
+            assert_eq!(&format!("{:?}", ty.kind), "TypeKind::Value(Value::Custom(\"::domichain_program::pubkey::Pubkey\"))")
         });
     }
 
@@ -170,7 +170,7 @@ mod tests {
             assert_eq!(desc, "my desc");
             assert_eq!(ty.ident.to_string().as_str(), "Pubkey");
             assert!(ty.kind.is_custom());
-            assert_eq!(&format!("{:?}", ty.kind), "TypeKind::Value(Value::Custom(\"::solana_program::pubkey::Pubkey\"))")
+            assert_eq!(&format!("{:?}", ty.kind), "TypeKind::Value(Value::Custom(\"::domichain_program::pubkey::Pubkey\"))")
         });
     }
 

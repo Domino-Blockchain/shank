@@ -53,16 +53,16 @@ fn literal_pubkeys_and_u8_byte_seeds() {
         quote! {
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds<'a>(
-                program_id: &'a ::solana_program::pubkey::Pubkey,
-                some_pubkey: &'a ::solana_program::pubkey::Pubkey,
+                program_id: &'a ::domichain_program::pubkey::Pubkey,
+                some_pubkey: &'a ::domichain_program::pubkey::Pubkey,
                 some_byte: &'a [u8; 1usize],
             ) -> [&'a [u8]; 4usize] {
                 [b"lit:prefix", program_id.as_ref(), some_pubkey.as_ref(), some_byte]
             }
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds_with_bump<'a>(
-                program_id: &'a ::solana_program::pubkey::Pubkey,
-                some_pubkey: &'a ::solana_program::pubkey::Pubkey,
+                program_id: &'a ::domichain_program::pubkey::Pubkey,
+                some_pubkey: &'a ::domichain_program::pubkey::Pubkey,
                 some_byte: &'a [u8; 1usize],
                 bump: &'a [u8; 1],
             ) -> [&'a [u8]; 5usize] {
@@ -94,8 +94,8 @@ fn candy_guard_edition_marker_seeds() {
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds<'a>(
                 prefix: &'a str,
-                program_id: &'a ::solana_program::pubkey::Pubkey,
-                master_edition_mint_info: &'a ::solana_program::account_info::AccountInfo,
+                program_id: &'a ::domichain_program::pubkey::Pubkey,
+                master_edition_mint_info: &'a ::domichain_program::account_info::AccountInfo,
                 edition: &'a str,
                 edition_marker_number: &'a String,
             ) -> [&'a [u8]; 5usize] {
@@ -110,8 +110,8 @@ fn candy_guard_edition_marker_seeds() {
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds_with_bump<'a>(
                 prefix: &'a str,
-                program_id: &'a ::solana_program::pubkey::Pubkey,
-                master_edition_mint_info: &'a ::solana_program::account_info::AccountInfo,
+                program_id: &'a ::domichain_program::pubkey::Pubkey,
+                master_edition_mint_info: &'a ::domichain_program::account_info::AccountInfo,
                 edition: &'a str,
                 edition_marker_number: &'a String,
                 bump: &'a [u8; 1],
@@ -150,18 +150,18 @@ fn candy_guard_mint_limit_seeds() {
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds<'a>(
                 id: &'a [u8; 1usize],
-                user: &'a ::solana_program::pubkey::Pubkey,
-                candy_guard_key: &'a ::solana_program::pubkey::Pubkey,
-                candy_machine_key: &'a ::solana_program::pubkey::Pubkey,
+                user: &'a ::domichain_program::pubkey::Pubkey,
+                candy_guard_key: &'a ::domichain_program::pubkey::Pubkey,
+                candy_machine_key: &'a ::domichain_program::pubkey::Pubkey,
             ) -> [&'a [u8]; 4usize] {
                 [id, user.as_ref(), candy_guard_key.as_ref(), candy_machine_key.as_ref()]
             }
             #[allow(unused, clippy::needless_lifetimes)]
             pub fn shank_seeds_with_bump<'a>(
                 id: &'a [u8; 1usize],
-                user: &'a ::solana_program::pubkey::Pubkey,
-                candy_guard_key: &'a ::solana_program::pubkey::Pubkey,
-                candy_machine_key: &'a ::solana_program::pubkey::Pubkey,
+                user: &'a ::domichain_program::pubkey::Pubkey,
+                candy_guard_key: &'a ::domichain_program::pubkey::Pubkey,
+                candy_machine_key: &'a ::domichain_program::pubkey::Pubkey,
                 bump: &'a [u8; 1],
             ) -> [&'a [u8]; 5usize] {
                 [id, user.as_ref(), candy_guard_key.as_ref(), candy_machine_key.as_ref(), bump]

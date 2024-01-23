@@ -42,7 +42,7 @@ impl Game {
     /// * **game**: The key of the game | [Pubkey]
     #[allow(unused, clippy::needless_lifetimes)]
     pub fn shank_seeds<'a>(
-        game: &'a ::solana_program::pubkey::Pubkey,
+        game: &'a ::domichain_program::pubkey::Pubkey,
     ) -> [&'a [u8]; 2usize] {
         [b"tictactoe", game.as_ref()]
     }
@@ -52,7 +52,7 @@ impl Game {
     /// * **bump**: the bump seed to pass when deriving the PDA
     #[allow(unused, clippy::needless_lifetimes)]
     pub fn shank_seeds_with_bump<'a>(
-        game: &'a ::solana_program::pubkey::Pubkey,
+        game: &'a ::domichain_program::pubkey::Pubkey,
         bump: &'a [u8; 1],
     ) -> [&'a [u8]; 3usize] {
         [b"tictactoe", game.as_ref(), bump]
@@ -63,11 +63,11 @@ impl Game {
     /// * **game**: The key of the game | [Pubkey]
     #[allow(unused)]
     pub fn shank_pda(
-        program_id: &::solana_program::pubkey::Pubkey,
-        game: &::solana_program::pubkey::Pubkey,
-    ) -> (::solana_program::pubkey::Pubkey, u8) {
+        program_id: &::domichain_program::pubkey::Pubkey,
+        game: &::domichain_program::pubkey::Pubkey,
+    ) -> (::domichain_program::pubkey::Pubkey, u8) {
         let seeds = Self::shank_seeds(game);
-        ::solana_program::pubkey::Pubkey::find_program_address(&seeds, program_id)
+        ::domichain_program::pubkey::Pubkey::find_program_address(&seeds, program_id)
     }
     /// Derives the PDA for this account allowing to provide a bump seed.
     ///
@@ -76,13 +76,13 @@ impl Game {
     /// * **bump**: the bump seed to pass when deriving the PDA
     #[allow(unused)]
     pub fn shank_pda_with_bump(
-        program_id: &::solana_program::pubkey::Pubkey,
-        game: &::solana_program::pubkey::Pubkey,
+        program_id: &::domichain_program::pubkey::Pubkey,
+        game: &::domichain_program::pubkey::Pubkey,
         bump: u8,
-    ) -> (::solana_program::pubkey::Pubkey, u8) {
+    ) -> (::domichain_program::pubkey::Pubkey, u8) {
         let bump_arg = &[bump];
         let seeds = Self::shank_seeds_with_bump(game, bump_arg);
-        ::solana_program::pubkey::Pubkey::find_program_address(&seeds, program_id)
+        ::domichain_program::pubkey::Pubkey::find_program_address(&seeds, program_id)
     }
 }
 ```

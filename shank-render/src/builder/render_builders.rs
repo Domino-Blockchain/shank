@@ -8,13 +8,13 @@ use shank_macro_impl::{
 use std::collections::HashMap;
 
 const DEFAULT_PUBKEYS: [(&str, &str); 7] = [
-    ("system_program", "solana_program::system_program::ID"),
+    ("system_program", "domichain_program::system_program::ID"),
     ("spl_token_program", "spl_token::ID"),
     ("spl_token_2022_program", "spl_token_2022::ID"),
     ("spl_ata_program", "spl_associated_token_account::ID"),
     (
         "sysvar_instructions",
-        "solana_program::sysvar::instructions::ID",
+        "domichain_program::sysvar::instructions::ID",
     ),
     ("token_metadata_program", "mpl_token_metadata::ID"),
     ("authorization_rules_program", "mpl_token_auth_rules::ID"),
@@ -60,11 +60,11 @@ pub(crate) fn generate_builders(
         let account_name = parse_str::<Ident>(&account.name).unwrap();
         if account.optional {
             quote! {
-                pub #account_name: Option<solana_program::pubkey::Pubkey>
+                pub #account_name: Option<domichain_program::pubkey::Pubkey>
             }
         } else {
             quote! {
-                pub #account_name: solana_program::pubkey::Pubkey
+                pub #account_name: domichain_program::pubkey::Pubkey
             }
         }
     });
@@ -105,7 +105,7 @@ pub(crate) fn generate_builders(
     let builder_accounts = variant.accounts.iter().map(|account| {
         let account_name = parse_str::<Ident>(&account.name).unwrap();
         quote! {
-            pub #account_name: Option<solana_program::pubkey::Pubkey>
+            pub #account_name: Option<domichain_program::pubkey::Pubkey>
         }
     });
 
@@ -176,7 +176,7 @@ pub(crate) fn generate_builders(
             if account.optional_signer {
                 let optional_signer = parse_str::<Ident>(&format!("{}_signer", account.name)).unwrap();
                 quote! {
-                    pub fn #account_name(&mut self, #account_name: solana_program::pubkey::Pubkey, signer: bool) -> &mut Self {
+                    pub fn #account_name(&mut self, #account_name: domichain_program::pubkey::Pubkey, signer: bool) -> &mut Self {
                         self.#account_name = Some(#account_name);
                         self.#optional_signer = signer;
                         self
@@ -184,7 +184,7 @@ pub(crate) fn generate_builders(
                 }
             } else {
             quote! {
-                pub fn #account_name(&mut self, #account_name: solana_program::pubkey::Pubkey) -> &mut Self {
+                pub fn #account_name(&mut self, #account_name: domichain_program::pubkey::Pubkey) -> &mut Self {
                     self.#account_name = Some(#account_name);
                     self
                 }
@@ -340,31 +340,31 @@ pub(crate) fn generate_builders(
             if account.writable {
                 quote! {
                     if let Some(#account_name) = self.#account_name {
-                        solana_program::instruction::AccountMeta::new(#account_name, #signer)
+                        domichain_program::instruction::AccountMeta::new(#account_name, #signer)
                     } else {
-                        solana_program::instruction::AccountMeta::new_readonly(crate::ID, false)
+                        domichain_program::instruction::AccountMeta::new_readonly(crate::ID, false)
                     }
                 }
             } else if account.signer {
                 quote! {
                     if let Some(#account_name) = self.#account_name {
-                        solana_program::instruction::AccountMeta::new_readonly(#account_name, #signer)
+                        domichain_program::instruction::AccountMeta::new_readonly(#account_name, #signer)
                     } else {
-                        solana_program::instruction::AccountMeta::new_readonly(crate::ID, false)
+                        domichain_program::instruction::AccountMeta::new_readonly(crate::ID, false)
                     }
                 }
             } else {
                 quote!{
-                    solana_program::instruction::AccountMeta::new_readonly(self.#account_name.unwrap_or(crate::ID), false)
+                    domichain_program::instruction::AccountMeta::new_readonly(self.#account_name.unwrap_or(crate::ID), false)
                 }
             }
         } else if account.writable {
             quote! {
-                solana_program::instruction::AccountMeta::new(self.#account_name, #signer)
+                domichain_program::instruction::AccountMeta::new(self.#account_name, #signer)
             }
         } else {
             quote!{
-                solana_program::instruction::AccountMeta::new_readonly(self.#account_name, #signer)
+                domichain_program::instruction::AccountMeta::new_readonly(self.#account_name, #signer)
             }
         }
     }).collect();
@@ -408,8 +408,8 @@ pub(crate) fn generate_builders(
     let default_instruction_builder = if variant.arguments.is_empty() {
         quote! {
             impl InstructionBuilder for #name {
-                fn instruction(&self) -> solana_program::instruction::Instruction {
-                    solana_program::instruction::Instruction {
+                fn instruction(&self) -> domichain_program::instruction::Instruction {
+                    domichain_program::instruction::Instruction {
                         program_id: crate::ID,
                         accounts: vec![
                             #(#account_metas,)*

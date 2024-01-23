@@ -4,7 +4,7 @@ use syn::{Error as ParseError, ItemMacro, Result as ParseResult};
 
 use crate::parsed_macro::ParsedMacro;
 
-/// Declared program id, i.e. `solana_program::declare_id!("<program id>")`
+/// Declared program id, i.e. `domichain_program::declare_id!("<program id>")`
 #[derive(Debug)]
 pub struct ProgramId {
     pub id: String,
@@ -74,13 +74,13 @@ mod tests {
     }
 
     #[test]
-    fn program_id_qualified_solana_program() {
+    fn program_id_qualified_domichain_program() {
         let parsed = parse_program_id(vec![
             quote! {
                 format!("Just another macro {}", s);
             },
             quote! {
-                solana_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
+                domichain_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
             },
         ])
         .expect("Should parse fine");
@@ -92,7 +92,7 @@ mod tests {
     }
 
     #[test]
-    fn program_id_imported_solana_program() {
+    fn program_id_imported_domichain_program() {
         let parsed = parse_program_id(vec![
             quote! {
                 format!("Just another macro {}", s);
@@ -116,7 +116,7 @@ mod tests {
                 declare_id!("otherid");
             },
             quote! {
-                solana_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
+                domichain_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
             },
         ])
         .expect_err("Should error");

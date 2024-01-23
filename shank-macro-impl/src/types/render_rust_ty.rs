@@ -255,10 +255,10 @@ mod tests {
         assert_tokens_match(
             RustType::owned_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
             )
             .render(),
-            "::solana_program::account_info::AccountInfo<'info>"
+            "::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -266,10 +266,10 @@ mod tests {
         assert_tokens_match(
             RustType::owned_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
             )
             .render_param("my_info"),
-            "my_info: ::solana_program::account_info::AccountInfo<'info>"
+            "my_info: ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -280,11 +280,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 None,
             )
             .render(),
-            "& ::solana_program::account_info::AccountInfo<'info>"
+            "& ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -292,11 +292,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 None,
             )
             .render_param("my_info"),
-            "my_info: & ::solana_program::account_info::AccountInfo<'info>"
+            "my_info: & ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -307,11 +307,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 ident("b"),
             )
             .render(),
-            "&'b ::solana_program::account_info::AccountInfo<'info>"
+            "&'b ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -319,11 +319,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 ident("b"),
             )
             .render_param("my_info"),
-            "my_info: &'b ::solana_program::account_info::AccountInfo<'info>"
+            "my_info: &'b ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -334,11 +334,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_mut_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 ident("b"),
             )
             .render(),
-            "&'b mut ::solana_program::account_info::AccountInfo<'info>"
+            "&'b mut ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );
@@ -346,11 +346,11 @@ mod tests {
         assert_tokens_match(
             RustType::ref_mut_custom_value(
                 "AccountInfo",
-                "::solana_program::account_info::AccountInfo<'info>",
+                "::domichain_program::account_info::AccountInfo<'info>",
                 ident("b"),
             )
             .render_param("my_info"),
-            "my_info: &'b mut ::solana_program::account_info::AccountInfo<'info>"
+            "my_info: &'b mut ::domichain_program::account_info::AccountInfo<'info>"
                 .parse()
                 .unwrap(),
         );

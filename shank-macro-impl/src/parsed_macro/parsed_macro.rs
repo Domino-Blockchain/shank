@@ -53,12 +53,12 @@ mod tests {
     }
 
     #[test]
-    fn macro_program_id_qualified_solana_program() {
+    fn macro_program_id_qualified_domichain_program() {
         let parsed = parse_macro(quote! {
-            solana_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
+            domichain_program::declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
         });
 
-        assert_eq!(parsed.path, "solana_program::declare_id", "path");
+        assert_eq!(parsed.path, "domichain_program::declare_id", "path");
         assert_eq!(parsed.path_idents.len(), 2, "path idents");
         assert_eq!(
             parsed.literal,
@@ -67,7 +67,7 @@ mod tests {
     }
 
     #[test]
-    fn macro_program_id_imported_solana_program() {
+    fn macro_program_id_imported_domichain_program() {
         let parsed = parse_macro(quote! {
             declare_id!("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
         });

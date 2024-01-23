@@ -5,7 +5,7 @@ use shank_macro_impl::{
     syn::Ident,
 };
 
-use crate::consts::solana_program_pubkey;
+use crate::consts::domichain_program_pubkey;
 
 use super::render_args_comments;
 
@@ -26,7 +26,7 @@ pub fn render_pda_fn(
         return None;
     }
 
-    let pubkey = solana_program_pubkey();
+    let pubkey = domichain_program_pubkey();
     let seed_bump_arg = if seed_fn_args.is_empty() {
         quote! { bump_arg }
     } else {
@@ -98,7 +98,7 @@ fn render_pda_parts(processed_seeds: &[ProcessedSeed]) -> RenderedPdaParts {
         .flatten()
         .collect::<Vec<TokenStream>>();
 
-    let pubkey_ty = solana_program_pubkey();
+    let pubkey_ty = domichain_program_pubkey();
     let program_id_arg = quote! { program_id : &#pubkey_ty };
     pda_fn_args.insert(0, program_id_arg);
 
@@ -203,7 +203,7 @@ mod tests {
     fn assert_program_id_arg(tokens: &TokenStream) {
         assert_tokenstream_eq(
             tokens,
-            "program_id : & ::solana_program::pubkey::Pubkey",
+            "program_id : & ::domichain_program::pubkey::Pubkey",
         );
     }
 
@@ -263,7 +263,7 @@ mod tests {
         assert_program_id_arg(&pda_fn_args[0]);
         assert_tokenstream_eq(
             &pda_fn_args[1],
-            "owner : & ::solana_program::pubkey::Pubkey",
+            "owner : & ::domichain_program::pubkey::Pubkey",
         );
 
         // Passes along owner only

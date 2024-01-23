@@ -283,7 +283,7 @@ mod tests {
         assert_eq!(seed_array_items[0].to_string(), expected_item);
         assert_tokenstream_eq(
             &seed_fn_args[0],
-            "program_id : &'a ::solana_program::pubkey::Pubkey",
+            "program_id : &'a ::domichain_program::pubkey::Pubkey",
         );
     }
 
@@ -302,7 +302,7 @@ mod tests {
         assert_eq!(seed_array_items[0].to_string(), expected_item);
         assert_tokenstream_eq(
             &seed_fn_args[0],
-            "owner : &'a ::solana_program::pubkey::Pubkey",
+            "owner : &'a ::domichain_program::pubkey::Pubkey",
         );
     }
 
@@ -324,7 +324,7 @@ mod tests {
         assert_eq!(seed_array_items[0].to_string(), expected_item);
         assert_tokenstream_eq(
             &seed_fn_args[0],
-            "owner : &'a ::solana_program::pubkey::Pubkey",
+            "owner : &'a ::domichain_program::pubkey::Pubkey",
         );
     }
 }
